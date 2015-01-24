@@ -4,17 +4,6 @@
 " neobundle path設定
 if has('vim_starting')
 	set nocompatible
-	" neobundleをインストールしていない場合は自動インストール
-	if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-		echo "install neobundle..."
-		" vimからコマンド呼び出しているだけ neobundle.vimのクローン
-		if has("mac")
-			:call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-		endif
-		if has("win64")	
-			:call system("git clone git://github.com/Shougo/neobundle.vim %HOMEPATH%\.vim\bundle\neobundle.vim")
-		endif
-	endif
 	" runtimepathの追加(必須)
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
@@ -75,7 +64,7 @@ filetype plugin indent on
 "---------------------------
 "Unite.vim setting
 "--------------------------
-" 入力モードで開始すめE
+" 入力モードで開始すめる
 let g:unite_enable_start_insert=1
 " バッファ一覧
 noremap <C-P> :Unite buffer<CR>
