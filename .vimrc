@@ -134,34 +134,35 @@ augroup END
 " lightline setting
 "---------------------------------------
 " lightlineの設定
-let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [
-        \     ['mode', 'paste'],
-        \     ['fugitive', 'gitgutter', 'filename'],
-        \   ],
-        \   'right': [
-        \     ['lineinfo', 'syntastic'],
-        \     ['percent'],
-        \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-        \   ]
-        \ },
-        \ 'component_function': {
-        \   'modified': 'MyModified',
-        \   'readonly': 'MyReadonly',
-        \   'fugitive': 'MyFugitive',
-        \   'filename': 'MyFilename',
-        \   'fileformat': 'MyFileformat',
-        \   'filetype': 'MyFiletype',
-        \   'fileencoding': 'MyFileencoding',
-        \   'mode': 'MyMode',
-        \   'syntastic': 'SyntasticStatuslineFlag',
-        \   'charcode': 'MyCharCode',
-        \   'gitgutter': 'MyGitGutter',
-        \ },
-	\ }
+" lightlineをデフォルト設定にしておかないとおかしくなる
+" let g:lightline = {
+"         \ 'colorscheme': 'wombat',
+"         \ 'mode_map': {'c': 'NORMAL'},
+"         \ 'active': {
+"         \   'left': [
+"         \     ['mode', 'paste'],
+"         \     ['fugitive', 'gitgutter', 'filename'],
+"         \   ],
+"         \   'right': [
+"         \     ['lineinfo', 'syntastic'],
+"         \     ['percent'],
+"         \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+"         \   ]
+"         \ },
+"         \ 'component_function': {
+"         \   'modified': 'MyModified',
+"         \   'readonly': 'MyReadonly',
+"         \   'fugitive': 'MyFugitive',
+"         \   'filename': 'MyFilename',
+"         \   'fileformat': 'MyFileformat',
+"         \   'filetype': 'MyFiletype',
+"         \   'fileencoding': 'MyFileencoding',
+"         \   'mode': 'MyMode',
+"         \   'syntastic': 'SyntasticStatuslineFlag',
+"         \   'charcode': 'MyCharCode',
+"         \   'gitgutter': 'MyGitGutter',
+"         \ },
+" 	\ }
 
 "-------------------------------------------
 "PreVim
