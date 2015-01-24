@@ -17,24 +17,51 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 読み込むプラグイン
 NeoBundle 'Shougo/unite.vim'
+
 " 補完
 NeoBundle 'Shougo/neocomplete.vim'
+
+" 非同期のためのvimproc
+NeoBundle 'Shougo/vimproc.vim'
+
+" vim上で動かすvimshell
+NeoBundle 'Shougo/vimshell.vim', {
+			\	'build' : {
+			\		'windows' : 'make -f make_mingw64.mak',
+			\		'cygwin'  : 'make -f make_cygwin.mak',
+			\		'mac'     : 'make -f make_mac.mak',
+			\		'unix'    : 'make -f make_unix.mak',
+			\	},
+			\ }
+
 "コメント挿入　C + --	
 NeoBundle 'tomtom/tcomment_vim'
+
 "ツリー構造で表示 :NERDTree	
 NeoBundle 'scrooloose/nerdtree'
+
 "コンパイラ :QuickRun
 NeoBundle 'thinca/vim-quickrun'
+
 "インデントの深さを表示
 "NeoBundle 'Yggdroot/indentLine'
+
 "powerlineの代わりにlightline
 NeoBundle 'itchyny/lightline.vim'
+
+" for MarkDown
+NeoBundle 'kannokanno/previm'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'tyru/open-browser.vim'
+
 " カラーテーマ
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'jpo/vim-railscasts-theme'
+
 "エラー部分ハイライト
 "NeoBundle 'jceb/vim-hier'
+
 "c#の補完
 " NeoBundleLazy 'nosami/Omnisharp', {
 " \   'autoload': {'filetypes': ['cs']},
@@ -44,12 +71,14 @@ NeoBundle 'jpo/vim-railscasts-theme'
 " \     'unix': 'xbuild server/OmniSharp.sln',
 " \   }
 " \ }
+
 "プロジェクトでルートを探す
 " NeoBundle 'airblade/vim-rooter'
 " if ! empty(neobundle#get("vim-rooter"))
 " 	let g:rooter_use_lcd = 1
 " 	let g:rooter_patterns = ['tags', '.git', '.git/', '_darcs/', '.hg/','.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
 " endif
+
 "キーマッピング
 NeoBundle 'kana/vim-submode'
 
@@ -105,34 +134,42 @@ augroup END
 " lightline setting
 "---------------------------------------
 " lightlineの設定
-" let g:lightline = {
-"         \ 'colorscheme': 'wombat',
-"         \ 'mode_map': {'c': 'NORMAL'},
-"         \ 'active': {
-"         \   'left': [
-"         \     ['mode', 'paste'],
-"         \     ['fugitive', 'gitgutter', 'filename'],
-"         \   ],
-"         \   'right': [
-"         \     ['lineinfo', 'syntastic'],
-"         \     ['percent'],
-"         \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-"         \   ]
-"         \ },
-"         \ 'component_function': {
-"         \   'modified': 'MyModified',
-"         \   'readonly': 'MyReadonly',
-"         \   'fugitive': 'MyFugitive',
-"         \   'filename': 'MyFilename',
-"         \   'fileformat': 'MyFileformat',
-"         \   'filetype': 'MyFiletype',
-"         \   'fileencoding': 'MyFileencoding',
-"         \   'mode': 'MyMode',
-"         \   'syntastic': 'SyntasticStatuslineFlag',
-"         \   'charcode': 'MyCharCode',
-"         \   'gitgutter': 'MyGitGutter',
-"         \ },
-" 	\ }
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [
+        \     ['mode', 'paste'],
+        \     ['fugitive', 'gitgutter', 'filename'],
+        \   ],
+        \   'right': [
+        \     ['lineinfo', 'syntastic'],
+        \     ['percent'],
+        \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+        \   ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode',
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \   'charcode': 'MyCharCode',
+        \   'gitgutter': 'MyGitGutter',
+        \ },
+	\ }
+
+"-------------------------------------------
+"PreVim
+"-------------------------------------------
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 "-------------------------------------------
 " カラースキーマの設定
@@ -162,10 +199,6 @@ set showmatch
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
-
-"---------------------------------------------------------------------------
-" GUI固有ではない画面表示の設定:
-"
 " 行番号を非表示 (nonumber:非表示)
 set number
 " ルーラーを表示 (ruler:表示)
@@ -184,3 +217,8 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
+" undoファイルを無効化
+set noundofile
+" バックアップファイルを作成しない
+" する場合はフォルダを指定した方がいい(ex set backupdir=C:/Temp)
+set nobackup
