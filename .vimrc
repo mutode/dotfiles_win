@@ -63,15 +63,16 @@ NeoBundle 'jpo/vim-railscasts-theme'
 "NeoBundle 'jceb/vim-hier'
 
 "c#の補完
-" NeoBundleLazy 'nosami/Omnisharp', {
-" \   'autoload': {'filetypes': ['cs']},
-" \   'build': {
-" \     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-" \     'mac': 'xbuild server/OmniSharp.sln',
-" \     'unix': 'xbuild server/OmniSharp.sln',
-" \   }
-" \ }
-
+NeoBundleLazy 'Omnisharp/omnisharp-vim', {
+\   'autoload': {'filetypes': ['cs']},
+\   'build': {
+\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+\     'mac': 'xbuild server/OmniSharp.sln',
+\     'unix': 'xbuild server/OmniSharp.sln',
+\   }
+\ }
+NeoBundle 'OrangeT/vim-csharp'
+NeoBundle 'tpope/vim-dispatch'
 "プロジェクトでルートを探す
 " NeoBundle 'airblade/vim-rooter'
 " if ! empty(neobundle#get("vim-rooter"))
@@ -111,6 +112,30 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 " ESCkey & ESCkey to END
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+"-------------------------
+" neocomplete setting
+"-------------------------
+"auto pop
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Enable omni completion.
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+setlocal omnifunc=OmniSharp#Complete
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
 "-------------------------
 " indentLine Setting 
@@ -172,6 +197,26 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+
+"-------------------------------------------
+" OmniSharp
+"-------------------------------------------
+" let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+"Set the type lookup function to use the preview window instead of the status line
+let g:OmniSharp_typeLookupInPreview = 1
+
+"Showmatch significantly slows down omnicomplete
+"when the first match contains parentheses.
+set noshowmatch
+
+"Super tab settings
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+"don't autoselect first item in omnicomplete, show if only one item (for preview)
+set completeopt=longest,menuone,preview
 "-------------------------------------------
 " カラースキーマの設定
 "-------------------------------------------
@@ -223,3 +268,6 @@ set noundofile
 " バックアップファイルを作成しない
 " する場合はフォルダを指定した方がいい(ex set backupdir=C:/Temp)
 set nobackup
+" insertモードでも英語から始まるように
+set iminsert=0
+set imsearch=-1
