@@ -1,4 +1,5 @@
 "----------------------------------------------------------------
+scriptencoding utf-8
 " 個人設定
 " neobundle設定
 " neobundle path設定
@@ -63,7 +64,7 @@ NeoBundle 'jpo/vim-railscasts-theme'
 "NeoBundle 'jceb/vim-hier'
 
 "c#の補完
-NeoBundleLazy 'Omnisharp/omnisharp-vim', {
+NeoBundleLazy 'nosami/Omnisharp', {
 \   'autoload': {'filetypes': ['cs']},
 \   'build': {
 \     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
@@ -73,6 +74,8 @@ NeoBundleLazy 'Omnisharp/omnisharp-vim', {
 \ }
 NeoBundle 'OrangeT/vim-csharp'
 NeoBundle 'tpope/vim-dispatch'
+" Git用
+NeoBundle 'tpope/vim-fugitive'
 "プロジェクトでルートを探す
 " NeoBundle 'airblade/vim-rooter'
 " if ! empty(neobundle#get("vim-rooter"))
@@ -86,7 +89,8 @@ NeoBundle 'kana/vim-submode'
 " Check install
 NeoBundleCheck
 call neobundle#end()
-filetype plugin indent on
+filetype plugin on 
+filetype indent off
 
 "------------------------------------------------------------------------
 " plugin setting 
@@ -117,11 +121,17 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " neocomplete setting
 "-------------------------
 "auto pop
+setlocal omnifunc=OmniSharp#Complete
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
@@ -130,7 +140,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Enable omni completion.
 autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-setlocal omnifunc=OmniSharp#Complete
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
@@ -148,7 +157,40 @@ let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 " key setting
 "-----------------------------------------
 nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 augroup vimrc-cpp
 	autocmd!
@@ -201,22 +243,31 @@ augroup END
 "-------------------------------------------
 " OmniSharp
 "-------------------------------------------
+let g:OmniSharp_host = "http://localhost:2001"
 " let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 "Set the type lookup function to use the preview window instead of the status line
-let g:OmniSharp_typeLookupInPreview = 1
+" let g:OmniSharp_typeLookupInPreview = 1
 
 "Showmatch significantly slows down omnicomplete
 "when the first match contains parentheses.
-set noshowmatch
+" set noshowmatch
 
 "Super tab settings
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
-let g:SuperTabClosePreviewOnPopupClose = 1
+" let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+" let g:SuperTabClosePreviewOnPopupClose = 1
 
 "don't autoselect first item in omnicomplete, show if only one item (for preview)
-set completeopt=longest,menuone,preview
+" set completeopt=longest,menuone,preview
+
+"-------------------------------------------
+" ctagsの設定 
+"-------------------------------------------
+if has('path_extra')
+	set tags+=tags;
+endif
+
 "-------------------------------------------
 " カラースキーマの設定
 "-------------------------------------------
@@ -224,7 +275,6 @@ set t_Co=256
 syntax on
 colorscheme hybrid 
 
-scriptencoding utf-8
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
