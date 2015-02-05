@@ -2,8 +2,8 @@
 scriptencoding utf-8
 "vim 問題点
 " OmniSharp出の補完がうまくいかない
-" NERDTreeでドライブ移動が出来ない
 " ctagsでドライブが違うときに上までtagsファイルを探しに言ってくれない
+" .を打ったときに補完を検索しているのか分からないがとても遅い
 
 " 個人設定
 " neobundle設定
@@ -358,3 +358,8 @@ set iminsert=0
 set imsearch=-1
 " 検索時ハイライトを行わないように(逆 hlsearch)
 set nohlsearch
+" 改行時に自動コメントアウトを行わない
+" こっちで定義しても意味がなさそう
+" (ftpluginのほうに書かないと反映されない)
+setlocal formatoptions-=r
+setlocal formatoptions-=o
