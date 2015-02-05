@@ -1,12 +1,19 @@
 "----------------------------------------------------------------
 scriptencoding utf-8
+"vim 問題点
+" OmniSharp出の補完がうまくいかない
+" NERDTreeでドライブ移動が出来ない
+" ctagsでドライブが違うときに上までtagsファイルを探しに言ってくれない
+
 " 個人設定
 " neobundle設定
 " neobundle path設定
 if has('vim_starting')
 	set nocompatible
 	" runtimepathの追加(必須)
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+	" set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=%HOME%/.vim/bundle/neobundle.vim
+
 endif
 
 " neobundle.vimの初期設定
@@ -24,6 +31,9 @@ NeoBundle 'Shougo/neocomplete.vim'
 
 " 非同期のためのvimproc
 NeoBundle 'Shougo/vimproc.vim'
+
+" vimfiler
+NeoBundle 'Shougo/vimfiler.vim'
 
 " vim上で動かすvimshell
 NeoBundle 'Shougo/vimshell.vim', {
@@ -170,7 +180,7 @@ nnoremap sp gT
 nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
-nnoremap so <C-w>_<C-w>|
+nnoremap so <C-w>_
 nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
@@ -182,6 +192,7 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+nnoremap <C-e> :VimFilerExplore -split -winwidth=30 -find<Cr>
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
@@ -196,6 +207,30 @@ augroup vimrc-cpp
 	autocmd!
 	autocmd FileType cpp call s:cpp()
 augroup END
+
+"---------------------------------------
+" vimfiler
+"---------------------------------------
+" autocmd! FileType vimfiler call g:my_vimfiler_settings()
+" function! g:my_vimfiler_settings()
+"   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+"   nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<Cr>
+"   nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<Cr>
+" endfunction
+"
+" let s:my_action = { 'is_selectable' : 1 }
+" function! s:my_action.func(candidates)
+"   wincmd p
+"   exec 'split '. a:candidates[0].action__path
+" endfunction
+" call unite#custom_action('file', 'my_split', s:my_action)
+"
+" let s:my_action = { 'is_selectable' : 1 }                     
+" function! s:my_action.func(candidates)
+"   wincmd p
+"   exec 'vsplit '. a:candidates[0].action__path
+" endfunction
+" call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 "---------------------------------------
 " lightline setting
@@ -265,7 +300,7 @@ let g:OmniSharp_host = "http://localhost:2001"
 " ctagsの設定 
 "-------------------------------------------
 if has('path_extra')
-	set tags+=tags;
+	set tags:=tags;
 endif
 
 "-------------------------------------------
@@ -321,3 +356,5 @@ set nobackup
 " insertモードでも英語から始まるように
 set iminsert=0
 set imsearch=-1
+" 検索時ハイライトを行わないように(逆 hlsearch)
+set nohlsearch
