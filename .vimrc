@@ -33,7 +33,10 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 
 " c++の補完
-NeoBundle 'osyo-manga/vim-marching'
+" NeoBundle 'osyo-manga/vim-marching'
+NeoBundle 'Rip-Rip/clang_complete', {
+			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
+			\ }
 
 " 非同期のためのvimproc
 NeoBundle 'Shougo/vimproc.vim'
@@ -162,8 +165,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.cpp =
-			\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
+			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::' 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
@@ -171,24 +173,34 @@ endif
 let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
 "-------------------------
+" clang_complete Setting 
+"-------------------------
+let g:clang_auto_select=0
+let g:clang_complete_auto=1
+let g:clang_periodic_quickfix=0
+let g:clang_complete_copen=0
+let g:clang_use_library=0
+let g:clang_exec="C:/Program\ Files\ (x86)/LLVM/bin/ctags.exe"
+let g:clang_user_options='-std=c++14'
+"-------------------------
 " marching Setting 
 "-------------------------
 " clang コマンドの設定
-" let g:marching_clang_command = "C:/clang.exe"
-
-" インクルードディレクトリのパスを設定
-" ここはpathを見て変える
-let $VIM_CPP_STDLIB = "C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
-
-let g:marching_include_paths = [
-\   $VIM_CPP_STDLIB
-\]
-" オプションの追加、どのバージョンでするか
-let g:marching_clang_command_option='-std=c++14'
-" neocompleteを使う場合
-let g:marching_enable_neocomplete = 1
-" オムニ補完時に補完ワードを挿入したくない場合
-imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+" let g:marching_clang_command = "C:/Program\ Files\ (x86)/LLVM/bin/ctags.exe"
+"
+" " インクルードディレクトリのパスを設定
+" " ここはpathを見て変える
+" let $VIM_CPP_STDLIB = "C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+"
+" let g:marching_include_paths = [
+" \   $VIM_CPP_STDLIB
+" \]
+" " オプションの追加、どのバージョンでするか
+" let g:marching_clang_command_option='-std=c++14'
+" " neocompleteを使う場合
+" let g:marching_enable_neocomplete = 1
+" " オムニ補完時に補完ワードを挿入したくない場合
+" imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
 
 "-------------------------
 " indentLine Setting 
@@ -241,10 +253,14 @@ augroup vimrc-cpp
 	autocmd!
 	autocmd FileType cpp call s:cpp()
 augroup END
-
+augroup vimrc-set_filetype_cpp
+	autocmd!
+	autocmd BufReadPost $VIM_CPP_STDLIB/* if empty(&filetype) | set filetype=cpp | endif
+augroup END
 " C++ の設定
 " FileType_cpp() 関数が定義されていれば最後にそれを呼ぶ
 function! s:cpp()
+	setlocal path+=$VIM_CPP_STDLIB
 	" quickrun.vim の設定
 	let b:quickrun_config = {
 \		"hook/add_include_option/enable" : 1
