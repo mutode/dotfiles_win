@@ -1,9 +1,12 @@
 "----------------------------------------------------------------
 scriptencoding utf-8
 "vim 問題点
-" OmniSharp出の補完がうまくいかない
 " ctagsでドライブが違うときに上までtagsファイルを探しに言ってくれない
 " .を打ったときに補完を検索しているのか分からないがとても遅い
+" 保管できない 
+" 文字化け
+" evervimが動かない
+" インデントがおかしい
 
 " 個人設定
 " neobundle設定
@@ -28,6 +31,9 @@ NeoBundle 'Shougo/unite.vim'
 
 " 補完
 NeoBundle 'Shougo/neocomplete.vim'
+
+" c++の補完
+NeoBundle 'osyo-manga/vim-marching'
 
 " 非同期のためのvimproc
 NeoBundle 'Shougo/vimproc.vim'
@@ -65,6 +71,9 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'tyru/open-browser.vim'
 
+" evervim for Evernote
+NeoBundle 'kakkyz81/evervim'
+
 " カラーテーマ
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -100,7 +109,7 @@ NeoBundle 'kana/vim-submode'
 NeoBundleCheck
 call neobundle#end()
 filetype plugin on 
-filetype indent off
+filetype indent on 
 
 "------------------------------------------------------------------------
 " plugin setting 
@@ -131,12 +140,13 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " neocomplete setting
 "-------------------------
 "auto pop
-setlocal omnifunc=OmniSharp#Complete
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
@@ -148,13 +158,37 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Enable omni completion.
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.cpp =
+			\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+
+"-------------------------
+" marching Setting 
+"-------------------------
+" clang コマンドの設定
+" let g:marching_clang_command = "C:/clang.exe"
+
+" インクルードディレクトリのパスを設定
+" ここはpathを見て変える
+let $VIM_CPP_STDLIB = "C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+
+let g:marching_include_paths = [
+\   $VIM_CPP_STDLIB
+\]
+" オプションの追加、どのバージョンでするか
+let g:marching_clang_command_option='-std=c++14'
+" neocompleteを使う場合
+let g:marching_enable_neocomplete = 1
+" オムニ補完時に補完ワードを挿入したくない場合
+imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
 
 "-------------------------
 " indentLine Setting 
@@ -207,6 +241,15 @@ augroup vimrc-cpp
 	autocmd!
 	autocmd FileType cpp call s:cpp()
 augroup END
+
+" C++ の設定
+" FileType_cpp() 関数が定義されていれば最後にそれを呼ぶ
+function! s:cpp()
+	" quickrun.vim の設定
+	let b:quickrun_config = {
+\		"hook/add_include_option/enable" : 1
+\	}
+endfunction
 
 "---------------------------------------
 " vimfiler
@@ -278,7 +321,7 @@ augroup END
 "-------------------------------------------
 " OmniSharp
 "-------------------------------------------
-let g:OmniSharp_host = "http://localhost:2001"
+let g:OmniSharp_host = "http://localhost:2000"
 " let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 "Set the type lookup function to use the preview window instead of the status line
 " let g:OmniSharp_typeLookupInPreview = 1
@@ -310,12 +353,28 @@ set t_Co=256
 syntax on
 colorscheme hybrid 
 
+"-------------------------------------------
+" evervim
+"-------------------------------------------
+let g:evervim_devtoken='S=s213:U=15a04b4:E=152c4b91e13:C=14b6d07f120:P=1cd:A=en-devtoken:V=2:H=d2baa5d6ce45cd3fb8f474ea06bb824d'
+nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
+nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
+nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
+nnoremap <silent> ,eb :<C-u>EvervimOpenBrowser<CR>
+nnoremap <silent> ,ec :<C-u>EvervimOpenClient<CR>
+nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
+nnoremap <silent> ,et :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done -tag:someday<CR>
+nnoremap <silent> ,eta :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done<CR>
+
+
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 set smartcase
 " タブの画面上での幅
 set tabstop=4
+" Vimが挿入するインデントの幅
+set shiftwidth=4
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
 " 自動的にインデントする (noautoindent:インデントしない)
