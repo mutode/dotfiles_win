@@ -1,11 +1,12 @@
 # 主にwin用のvimrc
+
 macようにも使える気がしないでもない
 gvim専用の設定はない
 neobundleのruntimepathをかえるくらい
 
 ## Install
 
-1. git, python(2.7.9 32bit), kaoriya-vim(32bit), ctags, MinGW, LLVM(3.4)を最初に入れておく
+1. git, python(2.7.9 32bit), kaoriya-vim(32bit), ctags, MinGW(package(gcc-g++, msys-base, base,developer-toolkit), LLVM(3.4)を最初に入れておく
 
 1. kaoriya-vimを一度も起動していない場合は一度gvim.exeを起動させておく
 
