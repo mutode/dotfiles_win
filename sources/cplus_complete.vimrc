@@ -15,7 +15,7 @@
 " marching Setting 
 "-------------------------
 " clang ÉRÉ}ÉìÉhÇÃê›íË
-let g:marching_clang_command = "C:/Program\ Files\ (x86)/LLVM/bin/ctags.exe"
+let g:marching_clang_command = "C:/Program\ Files\ (x86)/LLVM/bin/clang.exe"
 "
 let g:marching_include_paths = [
 \   $VIM_CPP_STDLIB
