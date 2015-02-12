@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " インクルードディレクトリのパスを設定
 " ここはpathを見て変える
 setlocal path+=$VIM_CPP_STDLIB
