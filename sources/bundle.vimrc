@@ -21,11 +21,11 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 
 " c++‚Ì•âŠ®
-NeoBundle 'osyo-manga/vim-marching'
+" NeoBundle 'osyo-manga/vim-marching'
 
-" NeoBundle 'Rip-Rip/clang_complete', {
-" 			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
-" 			\ }
+NeoBundle 'Rip-Rip/clang_complete', {
+			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
+			\ }
 
 " ”ñ“¯Šú‚Ì‚½‚ß‚Ìvimproc
 NeoBundle 'Shougo/vimproc.vim'
