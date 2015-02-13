@@ -18,3 +18,4 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 " ESCkey & ESCkey to END
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+

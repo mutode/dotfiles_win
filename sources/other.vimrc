@@ -92,10 +92,17 @@ augroup END
 "-------------------------------------------
 " ctags‚ÌÝ’è 
 "-------------------------------------------
-if has('path_extra')
-	set tags:=tags;
-endif
+" Šg’£Žq‚Å“Ç‚Ýž‚ÝÝ’è‚ð•Ï‚¦‚é
+au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
+" if has('path_extra')
+" 	set tags:=tags;
+" endif
 
+
+"-------------------------------------------
+" vim-tags‚ÌÝ’è 
+"-------------------------------------------
+au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:\User\shoei.asama\cs.tags 'pwd' 2>/dev/null &"
 
 
 "-------------------------------------------
