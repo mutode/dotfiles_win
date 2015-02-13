@@ -46,6 +46,9 @@ NeoBundle 'Shougo/vimshell.vim', {
 "コメント挿入　C + --	
 NeoBundle 'tomtom/tcomment_vim'
 
+" ctagsを設定
+NeoBundle 'szw/vim-tags'
+
 "ツリー構造で表示 :NERDTree	
 NeoBundle 'scrooloose/nerdtree'
 
@@ -67,7 +70,6 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kakkyz81/evervim'
 
 " カラーテーマ
-NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'jpo/vim-railscasts-theme'
 
@@ -83,16 +85,9 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \     'unix': 'xbuild server/OmniSharp.sln',
 \   }
 \ }
-NeoBundle 'OrangeT/vim-csharp'
-NeoBundle 'tpope/vim-dispatch'
+
 " Git用
 NeoBundle 'tpope/vim-fugitive'
-"プロジェクトでルートを探す
-" NeoBundle 'airblade/vim-rooter'
-" if ! empty(neobundle#get("vim-rooter"))
-" 	let g:rooter_use_lcd = 1
-" 	let g:rooter_patterns = ['tags', '.git', '.git/', '_darcs/', '.hg/','.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
-" endif
 
 "キーマッピング
 NeoBundle 'kana/vim-submode'

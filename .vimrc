@@ -15,6 +15,8 @@ elseif has("win32") || has('win64')
 	let $COMMON_HOME=$HOME
 endif
 
+" homeˆÈŠO‚Ìpath
+source $COMMON_HOME/dotfiles_win/sources/path.vimrc
 
 " NeoBundle
 source $COMMON_HOME/dotfiles_win/sources/bundle.vimrc

@@ -1,5 +1,7 @@
 " key setting vimrc
 
+" tagsが複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
