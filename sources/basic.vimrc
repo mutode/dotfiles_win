@@ -35,9 +35,9 @@ set nolist
 " 長い行を折り返して表示 (nowrap:折り返さない)
 set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
-" set laststatus=2
+set laststatus=2
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
-set cmdheight=2
+set cmdheight=1
 " コマンドをステータス行に表示
 set showcmd
 " タイトルを表示
