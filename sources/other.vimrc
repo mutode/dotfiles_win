@@ -7,7 +7,9 @@
 "-------------------------------------------
 set t_Co=256
 syntax on
-colorscheme hybrid 
+if has('win32') || has('win64')
+	colorscheme hybrid 
+endif
 
 
 "-------------------------

@@ -77,14 +77,14 @@ NeoBundle 'jpo/vim-railscasts-theme'
 "NeoBundle 'jceb/vim-hier'
 
 "c#‚Ì•âŠ®
-NeoBundleLazy 'nosami/Omnisharp', {
-\   'autoload': {'filetypes': ['cs']},
-\   'build': {
-\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-\     'mac': 'xbuild server/OmniSharp.sln',
-\     'unix': 'xbuild server/OmniSharp.sln',
-\   }
-\ }
+" NeoBundleLazy 'nosami/Omnisharp', {
+" \   'autoload': {'filetypes': ['cs']},
+" \   'build': {
+" \     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+" \     'mac': 'xbuild server/OmniSharp.sln',
+" \     'unix': 'xbuild server/OmniSharp.sln',
+" \   }
+" \ }
 
 " Git—p
 NeoBundle 'tpope/vim-fugitive'
