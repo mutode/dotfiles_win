@@ -10,7 +10,7 @@ scriptencoding utf-8
 
 " home‚ğ‹¤’Ê•Ï”‚É“ü‚ê‚Ä‚¨‚­
 if has('mac')
-	let $COMMON_HOME=~
+	let $COMMON_HOME=$HOME
 elseif has("win32") || has('win64')
 	let $COMMON_HOME=$HOME
 endif

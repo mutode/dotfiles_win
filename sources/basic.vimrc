@@ -1,5 +1,7 @@
 " basic vimrc
 
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " ŒŸõ‚É‘å•¶š¬•¶š‚ğ–³‹ (noignorecase:–³‹‚µ‚È‚¢)
 set ignorecase
 " ‘å•¶š¬•¶š‚Ì—¼•û‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚Í‘å•¶š¬•¶š‚ğ‹æ•Ê
