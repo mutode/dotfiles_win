@@ -1,38 +1,75 @@
-# å‚Éwin—p‚Ìvimrc
+# ä¸»ã«winç”¨ã®vimrc
 
-mac‚æ‚¤‚É‚àg‚¦‚é‹C‚ª‚µ‚È‚¢‚Å‚à‚È‚¢
-gvimê—p‚Ìİ’è‚Í‚È‚¢
-neobundle‚Ìruntimepath‚ğ‚©‚¦‚é‚­‚ç‚¢
+macã‚ˆã†ã«ã‚‚ä½¿ãˆã‚‹æ°—ãŒã—ãªã„ã§ã‚‚ãªã„
+gvimå°‚ç”¨ã®è¨­å®šã¯ãªã„
+neobundleã®runtimepathã‚’ã‹ãˆã‚‹ãã‚‰ã„
 
 ## Install
+### windows
 
-1. git, python(2.7.9 32bit), kaoriya-vim(32bit), ctags, MinGW(package(gcc-g++, msys-base, base,developer-toolkit), LLVM(3.4)‚ğÅ‰‚É“ü‚ê‚Ä‚¨‚­
+1. git, python(2.7.9 32bit), kaoriya-vim(32bit), ctags, MinGW(package(gcc-g++, msys-base, base,developer-toolkit), LLVM(3.4)ã‚’æœ€åˆã«å…¥ã‚Œã¦ãŠã
 
-1. kaoriya-vim‚ğˆê“x‚à‹N“®‚µ‚Ä‚¢‚È‚¢ê‡‚Íˆê“xgvim.exe‚ğ‹N“®‚³‚¹‚Ä‚¨‚­
+1. kaoriya-vimã‚’ä¸€åº¦ã‚‚èµ·å‹•ã—ã¦ã„ãªã„å ´åˆã¯ä¸€åº¦gvim.exeã‚’èµ·å‹•ã•ã›ã¦ãŠã
 
-1. ŠÂ‹«•Ï”HOME‚Ìİ’èAPath‚Éctags‚È‚Ç‚ğ’Ç‰Á
+1. ç’°å¢ƒå¤‰æ•°HOMEã®è¨­å®šã€Pathã«ctagsãªã©ã‚’è¿½åŠ 
 
-1. powershell‚ğ‹N“®‚µAƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÅA  
+1. powershellã‚’èµ·å‹•ã—ã€ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã€  
 `
 git clone http://github.com/mutode/dotfiles_win.git
 `
 
-1. powershell‚ğŠÇ—Ò‹N“®‚µAƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÅA  
+1. powershellã‚’ç®¡ç†è€…èµ·å‹•ã—ã€ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã€  
 `
-cmd /c mklink .vimrc "C:\Users\username\dotfiles_win\.vimrc"
-`
-
-1. powershell‚ğŠÇ—Ò‹N“®‚µAƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÅA  
-`
-cmd /c mklink /D vimfiles "C:\Users\username\dotfiles_win\vimfiles"
+cmd /c mklink .vimrc "C:Â¥UsersÂ¥usernameÂ¥dotfiles_winÂ¥.vimrc"
 `
 
-1. powershell‚ğ‹N“®‚µAƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÅA  
+1. powershellã‚’ç®¡ç†è€…èµ·å‹•ã—ã€ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã€  
 `
-git clone http://github.com/Shougo/neobundle.vim ".vim\bundle\neobundle.vim"
+cmd /c mklink /D vimfiles "C:Â¥UsersÂ¥usernameÂ¥dotfiles_winÂ¥vimfiles"
 `
 
-1. `kaoriya-vimƒCƒ“ƒXƒg[ƒ‹ƒtƒHƒ‹ƒ_(vim74‚È‚ñ‚¿‚á‚ç)/plugins/vimproc/autoload`‰º‚Ìwindows—pdll‚ğ`~/.vim/bundle/vimproc/autoload`‰º‚ÉƒRƒs[
+1. powershellã‚’èµ·å‹•ã—ã€ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã€  
+`
+git clone http://github.com/Shougo/neobundle.vim ".vimÂ¥bundleÂ¥neobundle.vim"
+`
+
+1. `kaoriya-vimã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ•ã‚©ãƒ«ãƒ€(vim74ãªã‚“ã¡ã‚ƒã‚‰)/plugins/vimproc/autoload`ä¸‹ã®windowsç”¨dllã‚’`â€¾/.vim/bundle/vimproc/autoload`ä¸‹ã«ã‚³ãƒ”ãƒ¼
 
 1. 
 
+### mac
+1. pythonãŒå…¥ã£ãŸvimã€xcodeã€
+
+1. ~ã§
+`
+git clone http://github.com/mutode/dotfiles_win
+`
+
+1. ~ã§
+`
+mkdir .vim
+`
+
+1. ~ã§
+`
+mkdir .vim/bundle
+`
+
+1. ~ã§
+`
+ln dotfiles_win/.vimrc .vimrc
+`
+
+1. ~/.vim/bundleã§
+`
+git clone http://github.com/Shougo/neobundle.vim
+`
+
+1. vimã‚’èµ·å‹•ã—ã¦:NeoBundleInstallã‚’ã™ã‚‹ã¨ã‚¨ãƒ©ãƒ¼ãŒå‡ºã‚‹ã®ã§ä¸€æ—¦ã€çµ‚äº†ã•ã›ã‚‹
+
+1. ~/.vim/bundle/neobundle.vim/vimproc.vim ã¨ã„ã†ãƒ•ã‚©ãƒ«ãƒ€ãŒã‚ã‚‹ã®ã§ãã“ã«ç§»å‹•ã—
+`
+make
+`
+
+1. ã‚‚ã†ä¸€åº¦vimã‚’èµ·å‹•ã•ã›ã‚‹
