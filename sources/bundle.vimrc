@@ -56,7 +56,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'thinca/vim-quickrun'
 
 "インデントの深さを表示
-"NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'Yggdroot/indentLine'
 
 "powerlineの代わりにlightline
 NeoBundle 'itchyny/lightline.vim'
@@ -77,14 +77,14 @@ NeoBundle 'jpo/vim-railscasts-theme'
 "NeoBundle 'jceb/vim-hier'
 
 "c#の補完
-" NeoBundleLazy 'nosami/Omnisharp', {
-" \   'autoload': {'filetypes': ['cs']},
-" \   'build': {
-" \     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-" \     'mac': 'xbuild server/OmniSharp.sln',
-" \     'unix': 'xbuild server/OmniSharp.sln',
-" \   }
-" \ }
+NeoBundleLazy 'nosami/Omnisharp', {
+\   'autoload': {'filetypes': ['cs']},
+\   'build': {
+\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+\     'mac': 'xbuild server/OmniSharp.sln',
+\     'unix': 'xbuild server/OmniSharp.sln',
+\   }
+\ }
 
 " Git用
 NeoBundle 'tpope/vim-fugitive'
