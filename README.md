@@ -60,6 +60,11 @@ mkdir .vim/bundle
 ln dotfiles_win/.vimrc .vimrc
 `
 
+1. ~/.vim/で
+`
+ln -s ~/dotfiles_win/vimfiles/after ./
+`
+
 1. ~/.vim/bundleで
 `
 git clone http://github.com/Shougo/neobundle.vim
@@ -73,3 +78,4 @@ make
 `
 
 1. もう一度vimを起動させる
+
