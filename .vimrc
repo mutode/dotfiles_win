@@ -1,21 +1,18 @@
 scriptencoding utf-8
 
-"vim –â‘è“_
-" ctags‚Åƒhƒ‰ƒCƒu‚ªˆá‚¤‚Æ‚«‚Éã‚Ü‚Åtagsƒtƒ@ƒCƒ‹‚ğ’T‚µ‚ÉŒ¾‚Á‚Ä‚­‚ê‚È‚¢
-" .‚ğ‘Å‚Á‚½‚Æ‚«‚É•âŠ®‚ğŒŸõ‚µ‚Ä‚¢‚é‚Ì‚©•ª‚©‚ç‚È‚¢‚ª‚Æ‚Ä‚à’x‚¢
-" •ÛŠÇ‚Å‚«‚È‚¢ 
-" •¶š‰»‚¯
-" evervim‚ª“®‚©‚È‚¢
-" ƒCƒ“ƒfƒ“ƒg‚ª‚¨‚©‚µ‚¢
+" vim Problems
 
-" home‚ğ‹¤’Ê•Ï”‚É“ü‚ê‚Ä‚¨‚­
+" ctagsã§ä¸Šã¾ã§tagsãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œç´¢ã—ã«ã„ã£ã¦ãã‚Œãªã„
+" Omnisharpã‚’ã„ã¡ã„ã¡Powershellã‹ã‚‰èµ·å‹•ã•ã›ãªã‘ã‚Œã°ã„ã‘ãªã„
+" macã§vimfilesã‚’èª­ã¿ã«ã„ã‹ãªã„ã®ã§ä»–ã®æ–¹æ³•ãŒå¿…è¦
+" ctagsãŒä½¿ã„ã¥ã‚‰ã„
+
 if has('mac')
 	let $COMMON_HOME=$HOME
 elseif has("win32") || has('win64')
 	let $COMMON_HOME=$HOME
 endif
 
-" homeˆÈŠO‚Ìpath
 source $COMMON_HOME/dotfiles_win/sources/path.vimrc
 
 " NeoBundle
@@ -32,6 +29,3 @@ source $COMMON_HOME/dotfiles_win/sources/cplus_complete.vimrc
 source $COMMON_HOME/dotfiles_win/sources/csharp_complete.vimrc
 source $COMMON_HOME/dotfiles_win/sources/other.vimrc
 source $COMMON_HOME/dotfiles_win/sources/keybind.vimrc
-
-
-

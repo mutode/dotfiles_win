@@ -35,7 +35,31 @@ git clone http://github.com/Shougo/neobundle.vim ".vim¥bundle¥neobundle.vim"
 
 1. `kaoriya-vimインストールフォルダ(vim74なんちゃら)/plugins/vimproc/autoload`下のwindows用dllを`‾/.vim/bundle/vimproc/autoload`下にコピー
 
-1. 
+1. cmdを管理者で起動し、
+`
+netsh http add urlacl url=http://+:2000/ user=username
+`
+
+1. powershellを起動し、`~/.vim/bundle/Omnisharp/`に移動
+
+1. 上記の後に
+`
+git submodule update --init
+`
+`
+cd server
+`
+`
+MSBuild.exe /p:Platform="Any CPU"
+`
+
+##### ＊Omnisharp
+
+- windowsでOmnisharpを起動するときはpowershellを開き
+`
+path/to/OmniSharp/server/OmniSharp/bin/Debug/OmniSharp.exe -s path/to/project.sln
+`
+
 
 ### mac
 1. pythonが入ったvim、xcode、
