@@ -2,8 +2,8 @@
 
 
 "-------------------------------------------
-" ƒJƒ‰[ƒXƒL[ƒ}‚Ìİ’è 
-" neobundle‚ğg‚Á‚Ä‚¢‚é‚Ì‚Åother‚É“ü‚ê‚é
+" ã‚«ãƒ©ãƒ¼ã‚¹ã‚­ãƒ¼ãƒã®è¨­å®š 
+" neobundleã‚’ä½¿ã£ã¦ã„ã‚‹ã®ã§otherã«å…¥ã‚Œã‚‹
 "-------------------------------------------
 set t_Co=256
 syntax on
@@ -18,6 +18,7 @@ endif
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '|'
+set list listchars=tab:\|-
 
 
 "---------------------------------------
@@ -25,7 +26,7 @@ let g:indentLine_char = '|'
 "---------------------------------------
 " autocmd! FileType vimfiler call g:my_vimfiler_settings()
 " function! g:my_vimfiler_settings()
-"   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+"   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("Â¥<Plug>(vimfiler_expand_tree)", "Â¥<Plug>(vimfiler_edit_file)")
 "   nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<Cr>
 "   nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<Cr>
 " endfunction
@@ -48,36 +49,36 @@ let g:indentLine_char = '|'
 "---------------------------------------
 " lightline setting
 "---------------------------------------
-" lightline‚Ìİ’è
-" lightline‚ğƒfƒtƒHƒ‹ƒgİ’è‚É‚µ‚Ä‚¨‚©‚È‚¢‚Æ‚¨‚©‚µ‚­‚È‚é
+" lightlineã®è¨­å®š
+" lightlineã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã«ã—ã¦ãŠã‹ãªã„ã¨ãŠã‹ã—ããªã‚‹
 " let g:lightline = {
-"         \ 'colorscheme': 'wombat',
-"         \ 'mode_map': {'c': 'NORMAL'},
-"         \ 'active': {
-"         \   'left': [
-"         \     ['mode', 'paste'],
-"         \     ['fugitive', 'gitgutter', 'filename'],
-"         \   ],
-"         \   'right': [
-"         \     ['lineinfo', 'syntastic'],
-"         \     ['percent'],
-"         \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-"         \   ]
-"         \ },
-"         \ 'component_function': {
-"         \   'modified': 'MyModified',
-"         \   'readonly': 'MyReadonly',
-"         \   'fugitive': 'MyFugitive',
-"         \   'filename': 'MyFilename',
-"         \   'fileformat': 'MyFileformat',
-"         \   'filetype': 'MyFiletype',
-"         \   'fileencoding': 'MyFileencoding',
-"         \   'mode': 'MyMode',
-"         \   'syntastic': 'SyntasticStatuslineFlag',
-"         \   'charcode': 'MyCharCode',
-"         \   'gitgutter': 'MyGitGutter',
-"         \ },
-" 	\ }
+"         Â¥ 'colorscheme': 'wombat',
+"         Â¥ 'mode_map': {'c': 'NORMAL'},
+"         Â¥ 'active': {
+"         Â¥   'left': [
+"         Â¥     ['mode', 'paste'],
+"         Â¥     ['fugitive', 'gitgutter', 'filename'],
+"         Â¥   ],
+"         Â¥   'right': [
+"         Â¥     ['lineinfo', 'syntastic'],
+"         Â¥     ['percent'],
+"         Â¥     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+"         Â¥   ]
+"         Â¥ },
+"         Â¥ 'component_function': {
+"         Â¥   'modified': 'MyModified',
+"         Â¥   'readonly': 'MyReadonly',
+"         Â¥   'fugitive': 'MyFugitive',
+"         Â¥   'filename': 'MyFilename',
+"         Â¥   'fileformat': 'MyFileformat',
+"         Â¥   'filetype': 'MyFiletype',
+"         Â¥   'fileencoding': 'MyFileencoding',
+"         Â¥   'mode': 'MyMode',
+"         Â¥   'syntastic': 'SyntasticStatuslineFlag',
+"         Â¥   'charcode': 'MyCharCode',
+"         Â¥   'gitgutter': 'MyGitGutter',
+"         Â¥ },
+" 	Â¥ }
 
 
 
@@ -92,9 +93,9 @@ augroup END
 
 
 "-------------------------------------------
-" ctags‚Ìİ’è 
+" ctagsã®è¨­å®š 
 "-------------------------------------------
-" Šg’£q‚Å“Ç‚İ‚İİ’è‚ğ•Ï‚¦‚é
+" æ‹¡å¼µå­ã§èª­ã¿è¾¼ã¿è¨­å®šã‚’å¤‰ãˆã‚‹
 au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
 " if has('path_extra')
 " 	set tags:=tags;
@@ -102,9 +103,9 @@ au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
 
 
 "-------------------------------------------
-" vim-tags‚Ìİ’è 
+" vim-tagsã®è¨­å®š 
 "-------------------------------------------
-au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:\User\shoei.asama\cs.tags 'pwd' 2>/dev/null &"
+au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:Â¥UserÂ¥shoei.asamaÂ¥cs.tags 'pwd' 2>/dev/null &"
 
 
 "-------------------------------------------
