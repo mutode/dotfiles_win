@@ -96,10 +96,11 @@ augroup END
 " ctagsの設定 
 "-------------------------------------------
 " 拡張子で読み込み設定を変える
-au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
-" if has('path_extra')
-" 	set tags:=tags;
-" endif
+" au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
+set tags=./tags,tags;
+if has('path_extra')
+	set tags+=tags;
+endif
 
 
 "-------------------------------------------
