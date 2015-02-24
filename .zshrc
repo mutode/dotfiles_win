@@ -19,6 +19,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 #-----------------
 #ビープ音を消す
 setopt no_beep
+setopt nolistbeep
 # language
 export LANG=ja_JP.UTF-8
 #コマンド訂正
@@ -30,13 +31,13 @@ setopt auto_pushd
 setopt auto_cd
 #補完候補を詰めて表示
 setopt list_packed
-#ビープ音を消す
-setopt nolistbeep
 #Emacsライクキーバインド
 bindkey -e
 #color変更
 export LSCOLORS=exfxcxdxbxegedabagacad
 alias ls="ls -G"
+# 補完 大文字小文字区別なし
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 #-----------------
 # プロンプトの設定 はエスケープ記号
@@ -98,6 +99,9 @@ bindkey "^N" history-beginning-search-forward-end
 #     fi
 # fi
 
+#-----------------
+#cocos2dx setting
+#-----------------
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
 export COCOS_CONSOLE_ROOT=/Applications/cocos2dx/cocos2d-x-3.3/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
