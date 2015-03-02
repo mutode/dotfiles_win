@@ -52,6 +52,8 @@ set iminsert=0
 set imsearch=-1
 " 検索時ハイライトを行わないように(逆 hlsearch)
 set nohlsearch
+" cursorline 行の強調表示
+set cursorline 
 " 改行時に自動コメントアウトを行わない
 " こっちで定義しても意味がなさそう
 " (ftpluginのほうに書かないと反映されない)
