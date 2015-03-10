@@ -1,39 +1,39 @@
 
-" neobundleİ’è
-" neobundle pathİ’è
+" neobundleè¨­å®š
+" neobundle pathè¨­å®š
 if has('vim_starting')
 	set nocompatible
-	" runtimepath‚Ì’Ç‰Á(•K{)
+	" runtimepathã®è¿½åŠ (å¿…é ˆ)
 	set runtimepath+=$COMMON_HOME/.vim/bundle/neobundle.vim
 endif
 
-" neobundle.vim‚Ì‰Šúİ’è
+" neobundle.vimã®åˆæœŸè¨­å®š
 call neobundle#begin(expand('$COMMON_HOME/.vim/bundle/'))
 "let g:neobundle_default_git_protocol='https'
 
-" neobundle‚ğXV‚·‚é‚½‚ß‚Ìİ’è
+" neobundleã‚’æ›´æ–°ã™ã‚‹ãŸã‚ã®è¨­å®š
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" “Ç‚İ‚Şƒvƒ‰ƒOƒCƒ“
+" èª­ã¿è¾¼ã‚€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
 NeoBundle 'Shougo/unite.vim'
 
-" •âŠ®
+" è£œå®Œ
 NeoBundle 'Shougo/neocomplete.vim'
 
-" c++‚Ì•âŠ®
+" c++ã®è£œå®Œ
 " NeoBundle 'osyo-manga/vim-marching'
 
 NeoBundle 'Rip-Rip/clang_complete', {
 			\ 'autoload' : {'filetypes' : ['c', 'cpp']}
 			\ }
 
-" ”ñ“¯Šú‚Ì‚½‚ß‚Ìvimproc
+" éåŒæœŸã®ãŸã‚ã®vimproc
 NeoBundle 'Shougo/vimproc.vim'
 
 " vimfiler
 NeoBundle 'Shougo/vimfiler.vim'
 
-" vimã‚Å“®‚©‚·vimshell
+" vimä¸Šã§å‹•ã‹ã™vimshell
 NeoBundle 'Shougo/vimshell.vim', {
 			\	'build' : {
 			\		'windows' : 'make -f make_mingw64.mak',
@@ -43,22 +43,19 @@ NeoBundle 'Shougo/vimshell.vim', {
 			\	},
 			\ }
 
-"ƒRƒƒ“ƒg‘}“ü@C + --	
+"ã‚³ãƒ¡ãƒ³ãƒˆæŒ¿å…¥ã€€C + --	
 NeoBundle 'tomtom/tcomment_vim'
 
-" ctags‚ğİ’è
+" ctagsã‚’è¨­å®š
 NeoBundle 'szw/vim-tags'
 
-"ƒcƒŠ[\‘¢‚Å•\¦ :NERDTree	
-NeoBundle 'scrooloose/nerdtree'
-
-"ƒRƒ“ƒpƒCƒ‰ :QuickRun
+"ã‚³ãƒ³ãƒ‘ã‚¤ãƒ© :QuickRun
 NeoBundle 'thinca/vim-quickrun'
 
-"ƒCƒ“ƒfƒ“ƒg‚Ì[‚³‚ğ•\¦
+"ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã®æ·±ã•ã‚’è¡¨ç¤º
 NeoBundle 'Yggdroot/indentLine'
 
-"powerline‚Ì‘ã‚í‚è‚Élightline
+"powerlineã®ä»£ã‚ã‚Šã«lightline
 NeoBundle 'itchyny/lightline.vim'
 
 " for MarkDown
@@ -69,14 +66,14 @@ NeoBundle 'tyru/open-browser.vim'
 " evervim for Evernote
 NeoBundle 'kakkyz81/evervim'
 
-" ƒJƒ‰[ƒe[ƒ}
+" ã‚«ãƒ©ãƒ¼ãƒ†ãƒ¼ãƒ
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'jpo/vim-railscasts-theme'
 
-"ƒGƒ‰[•”•ªƒnƒCƒ‰ƒCƒg
+" ã‚¨ãƒ©ãƒ¼éƒ¨åˆ†ãƒã‚¤ãƒ©ã‚¤ãƒˆ
 "NeoBundle 'jceb/vim-hier'
 
-"c#‚Ì•âŠ®
+" c#ã®è£œå®Œ
 NeoBundleLazy 'nosami/Omnisharp', {
 \   'autoload': {'filetypes': ['cs']},
 \   'build': {
@@ -85,11 +82,11 @@ NeoBundleLazy 'nosami/Omnisharp', {
 \     'unix': 'xbuild server/OmniSharp.sln',
 \   }
 \ }
+" C#ç”¨syntaxã¨ãƒã‚§ãƒƒã‚«ãƒ¼
+NeoBundleLazy 'OrangeT/vim-csharp', { 'autoload': { 'filetypes': ['cs'] } }
+NeoBundle 'scrooloose/syntastic'
 
-" Git—p
-NeoBundle 'tpope/vim-fugitive'
-
-"ƒL[ƒ}ƒbƒsƒ“ƒO
+"ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
 NeoBundle 'kana/vim-submode'
 
 " Check install

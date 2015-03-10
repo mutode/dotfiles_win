@@ -8,8 +8,9 @@ scriptencoding utf-8
 " indentlineがちょこちょこ途切れている(c++ではなっていない
 " lightlineをもうちょっと増やしたい
 " Ggrep fugire.vim がよくわかってない
-" cocos用のインクルードパスを追加させるために、ローカルでftpluginを持たせる必
-" 要がある
+" cocos用のインクルードパスを追加させるために、ローカルでftpluginを持たせる必要がある
+" unite.vimでファイル検索をgit全体からコマンド一つで行いたい
+" vimfilerで同期しないでいくつも起動したい
 
 if has('mac')
 	let $COMMON_HOME=$HOME
