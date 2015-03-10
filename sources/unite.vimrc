@@ -1,21 +1,28 @@
 "Unite.vim setting
 
-" 入力モードで開始すめる
+" 蜈･蜉帙Δ繝ｼ繝峨〒髢句ｧ九☆繧√ｋ
 let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウをsplit して開く
+nnoremap [unite] <Nop>
+nmap <Space>u [unite]
+" 繝舌ャ繝輔ぃ荳隕ｧ
+noremap <silent> [unite]u :<C-u>Unite<Space>file_rec<CR>
+noremap <silent> [unite]g :<C-u>Unite grep<CR>
+noremap <silent> [unite]f :<C-u>Unite buffer<CR>
+
+" 繧ｦ繧｣繝ｳ繝峨え繧痴plit 縺励※髢九￥
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦にvsplitして開く
+" 繧ｦ繧｣繝ｳ繝峨え繧堤ｸｦ縺ｫvsplit縺励※髢九￥
 au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
 " ESCkey & ESCkey to END
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
+" 繝舌ャ繝輔ぃ繧堤ｧｻ蜍輔＠縺溘→縺阪↓
+" 閾ｪ蜍慕噪縺ｫ繝励Ο繧ｸ繧ｧ繧ｯ繝医Ν繝ｼ繝医ｒ繧ｫ繝ｬ繝ｳ繝医ョ繧｣繝ｬ繧ｯ繝医Μ縺ｫ縺吶ｋ
+function! ChangeCurrentDirectoryToProjectRoot()
+	let root = unite#util#path2project_directory(expand('%'))
+	execute 'lcd' root
+endfunction
+:au BufEnter * :call ChangeCurrentDirectoryToProjectRoot()

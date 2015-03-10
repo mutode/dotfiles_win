@@ -6,7 +6,7 @@
 " neobundleを使っているのでotherに入れる
 "-------------------------------------------
 set t_Co=256
-syntax on
+" syntax on
 if has('win32') || has('win64')
 	colorscheme hybrid 
 endif
@@ -52,7 +52,7 @@ set list listchars=tab:\|-
 " lightlineの設定
 " lightlineをデフォルト設定にしておかないとおかしくなる
 " let g:lightline = {
-"         ¥ 'colorscheme': 'wombat',
+"         \ 'colorscheme': 'wombat',
 "         ¥ 'mode_map': {'c': 'NORMAL'},
 "         ¥ 'active': {
 "         ¥   'left': [
@@ -79,7 +79,31 @@ set list listchars=tab:\|-
 "         ¥   'gitgutter': 'MyGitGutter',
 "         ¥ },
 " 	¥ }
+"
+let g:lightline = {
+	\	'active': {
+	\		'right': [ 
+	\			[ 'lineinfo', 'syntastic' ],
+	\			[ 'percent' ],
+	\			[ 'fileformat', 'fileencoding', 'filetype'] ]
+	\	},
+	\	'component_expand': {
+	\		'syntastic': 'SyntasticStatuslineFlag'
+	\	},
+	\	'component_type': {
+	\		'syntastic': 'error',
+	\	}
+	\}
 
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+	autocmd!
+	autocmd BufWritePost *.cs call s:syntastic()
+augroup END
+function! s:syntastic()
+	SyntasticCheck
+	call lightline#update()
+endfunction
 
 
 "-------------------------------------------
@@ -107,7 +131,6 @@ endif
 " vim-tagsの設定 
 "-------------------------------------------
 au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥User¥shoei.asama¥cs.tags 'pwd' 2>/dev/null &"
-
 
 "-------------------------------------------
 " evervim
