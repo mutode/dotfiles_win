@@ -6,7 +6,7 @@
 " neobundleを使っているのでotherに入れる
 "-------------------------------------------
 set t_Co=256
-" syntax on
+syntax on
 if has('win32') || has('win64')
 	colorscheme hybrid 
 endif
@@ -81,19 +81,24 @@ set list listchars=tab:\|-
 " 	¥ }
 "
 let g:lightline = {
-	\	'active': {
-	\		'right': [ 
-	\			[ 'lineinfo', 'syntastic' ],
-	\			[ 'percent' ],
-	\			[ 'fileformat', 'fileencoding', 'filetype'] ]
-	\	},
-	\	'component_expand': {
-	\		'syntastic': 'SyntasticStatuslineFlag'
-	\	},
-	\	'component_type': {
-	\		'syntastic': 'error',
-	\	}
-	\}
+			\ 'colorscheme': 'wombat',
+			\ 'mode_map': {'c': 'NORMAL'},
+			\ 'active': {
+			\ 'left': [
+			\  ['mode', 'paste'],
+			\  ['fugitive', 'gitgutter', 'filename'],],
+			\ 'right': [ 
+			\  [ 'lineinfo', 'syntastic' ],
+			\  [ 'percent' ],
+			\  [ 'charcode', 'fileformat', 'fileencoding', 'filetype'],]
+			\ },
+			\'component_expand': {
+			\ 'syntastic': 'SyntasticStatuslineFlag'
+			\ },
+			\'component_type': {
+			\ 'syntastic': 'error',
+			\ },
+			\ }
 
 let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup AutoSyntastic
