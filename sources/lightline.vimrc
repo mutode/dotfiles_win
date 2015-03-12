@@ -26,10 +26,10 @@ let g:lightline = {
 			\}
 
 function! MyModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? "" : &modified ? '+' : &modifiable ? '' : '-'
+	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 function! MyReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '-RO-' : ''
 endfunction
 
 function! MyFilename()
@@ -38,7 +38,7 @@ function! MyFilename()
 				\ &ft == 'unite' ? unite#get_status_string() :
 				\ &ft == 'vimshell' ? vimshell#get_status_string() :
 				\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-				\ ('' != MyModified() ? ' ' . Mymodified : '')
+				\ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
@@ -61,7 +61,7 @@ function! MyFiletype()
 endfunction
 
 function! MyFileencoding()
-	return winwidth(0) > 70 ? (strlen(&fenc) ? &fect : &enc) : ''
+	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
