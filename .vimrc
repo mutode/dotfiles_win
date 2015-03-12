@@ -5,7 +5,6 @@ scriptencoding utf-8
 " ctagsで上までtagsファイルを検索しにいってくれない
 " OmnisharpをいちいちPowershellから起動させなければいけない
 " ctagsが使いづらい
-" lightlineをもうちょっと増やしたいなぜか増えない
 " cocos用のインクルードパスを追加させるために、ローカルでftpluginを持たせる必要がある
 " unite.vimでファイル検索をgit全体からコマンド一つで行いたい無理かも
 " C#syntaxがダメ
@@ -30,5 +29,6 @@ source $COMMON_HOME/dotfiles_win/sources/neocomplete.vimrc
 source $COMMON_HOME/dotfiles_win/sources/cplus_common.vimrc
 source $COMMON_HOME/dotfiles_win/sources/cplus_complete.vimrc
 source $COMMON_HOME/dotfiles_win/sources/csharp_complete.vimrc
+source $COMMON_HOME/dotfiles_win/sources/lightline.vimrc
 source $COMMON_HOME/dotfiles_win/sources/other.vimrc
 source $COMMON_HOME/dotfiles_win/sources/keybind.vimrc

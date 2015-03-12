@@ -46,69 +46,6 @@ set list listchars=tab:\|-
 " call unite#custom_action('file', 'my_vsplit', s:my_action)
 
 
-"---------------------------------------
-" lightline setting
-"---------------------------------------
-" lightlineの設定
-" lightlineをデフォルト設定にしておかないとおかしくなる
-" let g:lightline = {
-"         \ 'colorscheme': 'wombat',
-"         ¥ 'mode_map': {'c': 'NORMAL'},
-"         ¥ 'active': {
-"         ¥   'left': [
-"         ¥     ['mode', 'paste'],
-"         ¥     ['fugitive', 'gitgutter', 'filename'],
-"         ¥   ],
-"         ¥   'right': [
-"         ¥     ['lineinfo', 'syntastic'],
-"         ¥     ['percent'],
-"         ¥     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-"         ¥   ]
-"         ¥ },
-"         ¥ 'component_function': {
-"         ¥   'modified': 'MyModified',
-"         ¥   'readonly': 'MyReadonly',
-"         ¥   'fugitive': 'MyFugitive',
-"         ¥   'filename': 'MyFilename',
-"         ¥   'fileformat': 'MyFileformat',
-"         ¥   'filetype': 'MyFiletype',
-"         ¥   'fileencoding': 'MyFileencoding',
-"         ¥   'mode': 'MyMode',
-"         ¥   'syntastic': 'SyntasticStatuslineFlag',
-"         ¥   'charcode': 'MyCharCode',
-"         ¥   'gitgutter': 'MyGitGutter',
-"         ¥ },
-" 	¥ }
-"
-let g:lightline = {
-			\ 'colorscheme': 'wombat',
-			\ 'mode_map': {'c': 'NORMAL'},
-			\ 'active': {
-			\ 'left': [
-			\  ['mode', 'paste'],
-			\  ['fugitive', 'gitgutter', 'filename'],],
-			\ 'right': [ 
-			\  [ 'lineinfo', 'syntastic' ],
-			\  [ 'percent' ],
-			\  [ 'charcode', 'fileformat', 'fileencoding', 'filetype'],]
-			\ },
-			\'component_expand': {
-			\ 'syntastic': 'SyntasticStatuslineFlag'
-			\ },
-			\'component_type': {
-			\ 'syntastic': 'error',
-			\ },
-			\ }
-
-let g:syntastic_mode_map = { 'mode': 'passive' }
-augroup AutoSyntastic
-	autocmd!
-	autocmd BufWritePost *.cs call s:syntastic()
-augroup END
-function! s:syntastic()
-	SyntasticCheck
-	call lightline#update()
-endfunction
 
 
 "-------------------------------------------
