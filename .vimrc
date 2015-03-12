@@ -5,12 +5,10 @@ scriptencoding utf-8
 " ctagsで上までtagsファイルを検索しにいってくれない
 " OmnisharpをいちいちPowershellから起動させなければいけない
 " ctagsが使いづらい
-" indentlineがちょこちょこ途切れている(c++ではなっていない
-" lightlineをもうちょっと増やしたい
-" Ggrep fugire.vim がよくわかってない
+" lightlineをもうちょっと増やしたいなぜか増えない
 " cocos用のインクルードパスを追加させるために、ローカルでftpluginを持たせる必要がある
-" unite.vimでファイル検索をgit全体からコマンド一つで行いたい
-" vimfilerで同期しないでいくつも起動したい
+" unite.vimでファイル検索をgit全体からコマンド一つで行いたい無理かも
+" C#syntaxがダメ
 
 if has('mac')
 	let $COMMON_HOME=$HOME
