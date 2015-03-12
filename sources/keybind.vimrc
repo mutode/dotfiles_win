@@ -29,7 +29,7 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
-nnoremap <C-e> :VimFilerExplore -split -winwidth=60<Cr>
+nnoremap <C-e> :VimFilerExplore -split -winwidth=50<Cr>
 nnoremap <Space>e :lcd %:h<Cr>
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')

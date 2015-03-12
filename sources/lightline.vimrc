@@ -1,7 +1,5 @@
 " lightline setting
 
-
-
 "---------------------------------------
 " lightline setting
 "---------------------------------------
@@ -22,6 +20,12 @@ let g:lightline = {
 			\ 'filetype': 'MyFiletype',
 			\ 'fileencoding': 'MyFileencoding',
 			\ 'mode': 'MyMode'
+			\ },
+			\'component_expand': {
+			\ 'syntastic': 'SyntasticStatuslineFlag'
+			\ },
+			\'component_type': {
+			\ 'syntastic': 'error',
 			\ }
 			\}
 
@@ -68,6 +72,15 @@ function! MyMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+	autocmd!
+	autocmd BufWritePost *.cs call s:syntastic()
+augroup END
+function! s:syntastic()
+	SyntasticCheck
+	call lightline#update()
+endfunction
 " let g:lightline = {
 " 			\ 'colorscheme': 'wombat',
 " 			\ 'mode_map': {'c': 'NORMAL'},
@@ -80,20 +93,5 @@ endfunction
 " 			\  [ 'percent' ],
 " 			\  [ 'charcode', 'fileformat', 'fileencoding', 'filetype'],]
 " 			\ },
-" 			\'component_expand': {
-" 			\ 'syntastic': 'SyntasticStatuslineFlag'
-" 			\ },
-" 			\'component_type': {
-" 			\ 'syntastic': 'error',
-" 			\ },
 " 			\ }
 "
-" let g:syntastic_mode_map = { 'mode': 'passive' }
-" augroup AutoSyntastic
-" 	autocmd!
-" 	autocmd BufWritePost *.cs call s:syntastic()
-" augroup END
-" function! s:syntastic()
-" 	SyntasticCheck
-" 	call lightline#update()
-" endfunction
