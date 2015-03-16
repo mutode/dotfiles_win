@@ -2,12 +2,15 @@ scriptencoding utf-8
 
 " vim Problems
 
-" ctagsで上までtagsファイルを検索しにいってくれない
-" OmnisharpをいちいちPowershellから起動させなければいけない
-" ctagsが使いづらい
-" cocos用のインクルードパスを追加させるために、ローカルでftpluginを持たせる必要がある
-" unite.vimでファイル検索をgit全体からコマンド一つで行いたい無理かも
-" C#syntaxがダメ
+" できたら早め
+	" ctagsが使いづらい
+	" ctagsで上までtagsファイルを検索しにいってくれない
+	" unite.vimでファイル検索をgit全体からコマンド一つで行いたい無理かも
+	" C#syntaxがきれいじゃない
+
+" 急ぎではない
+	" OmnisharpをいちいちPowershellから起動させなければいけない
+	" cocosのインクルードパスの設定の仕方がわからない
 
 if has('mac')
 	let $COMMON_HOME=$HOME
