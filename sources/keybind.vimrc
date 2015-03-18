@@ -1,7 +1,11 @@
 " key setting vimrc
 
 " tagsが複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
+" nnoremap <C-]> g<C-]>
+" tags一覧を選択後垂直割して表示
+" nnoremap <C-]> :sts <CR>
+" tags一覧を選択後別タブで表示
+nnoremap <C-]> :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k

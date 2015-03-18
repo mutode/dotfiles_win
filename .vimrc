@@ -3,7 +3,6 @@ scriptencoding utf-8
 " vim Problems
 
 " できたら早め
-	" ctagsが使いづらい
 	" ctagsで上までtagsファイルを検索しにいってくれない
 	" unite.vimでファイル検索をgit全体からコマンド一つで行いたい無理かも
 	" C#syntaxがきれいじゃない
