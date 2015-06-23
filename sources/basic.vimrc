@@ -6,7 +6,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 if has('win32') || has('win64')
 	set guifont=Consolas:h12
 	set columns=100
-	set lines=38
+	set lines=40
 endif
 	" set guifontwide=Consolas
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
