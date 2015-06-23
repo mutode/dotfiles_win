@@ -5,6 +5,8 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 " font
 if has('win32') || has('win64')
 	set guifont=Consolas:h12
+	set columns=100
+	set lines=38
 endif
 	" set guifontwide=Consolas
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
@@ -62,5 +64,12 @@ set cursorline
 " 改行時に自動コメントアウトを行わない
 " こっちで定義しても意味がなさそう
 " (ftpluginのほうに書かないと反映されない)
-setlocal formatoptions-=r
-setlocal formatoptions-=o
+" setlocal formatoptions-=r
+" setlocal formatoptions-=o
+autocmd FileType * setlocal formatoptions -=ro
+
+"grep setting
+if has('win32') || has('win64')
+	set grepprg=c:/cygwingrep/bin/grep\ -nH
+endif
+au QuickFixCmdPost grep copen
