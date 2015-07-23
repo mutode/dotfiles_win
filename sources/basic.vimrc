@@ -1,7 +1,9 @@
 " basic vimrc
 
+scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,mac,dos
 " font
 if has('win32') || has('win64')
 	set guifont=Consolas:h12
@@ -36,9 +38,10 @@ set number
 " ルーラーを表示 (ruler:表示)
 set noruler
 " タブや改行を表示 (list:表示)
-set nolist
+set list
 " どの文字でタブや改行を表示するかを設定
-"set listchars=tab:>-,extends:<,trail:-,eol:<
+" tab:タブ, trail:行末空白, eol:改行, extends:折り返し
+set listchars=tab:»•,trail:•,eol:↲,extends:»
 " 長い行を折り返して表示 (nowrap:折り返さない)
 set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
