@@ -41,7 +41,11 @@ set noruler
 set list
 " どの文字でタブや改行を表示するかを設定
 " tab:タブ, trail:行末空白, eol:改行, extends:折り返し
-set listchars=tab:»•,trail:•,eol:↲,extends:»
+if has('win32') || has('win64')
+	set listchars=tab:»-,trail:•,eol:↓,extends:»
+elseif has('mac')
+	set listchars=tab:»•,trail:•,eol:↲,extends:»
+endif
 " 長い行を折り返して表示 (nowrap:折り返さない)
 set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
