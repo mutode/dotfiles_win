@@ -5,12 +5,11 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,mac,dos
 " font
-if has('win32') || has('win64')
-	set guifont=Consolas:h12
-	set columns=100
-	set lines=40
-endif
-	" set guifontwide=Consolas
+set guifont=Consolas:h12
+set columns=80
+set lines=30
+set guifontwide=Consolas
+
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
@@ -38,7 +37,7 @@ set number
 " ルーラーを表示 (ruler:表示)
 set noruler
 " タブや改行を表示 (list:表示)
-set list
+set nolist
 " どの文字でタブや改行を表示するかを設定
 " tab:タブ, trail:行末空白, eol:改行, extends:折り返し
 " if has('win32') || has('win64')
@@ -74,9 +73,3 @@ set cursorline
 " setlocal formatoptions-=r
 " setlocal formatoptions-=o
 autocmd FileType * setlocal formatoptions -=ro
-
-"grep setting
-if has('win32') || has('win64')
-	set grepprg=c:/cygwingrep/bin/grep\ -nH
-endif
-au QuickFixCmdPost grep copen
