@@ -20,22 +20,6 @@ let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '|'
 "set list listchars=tab:\|-
 
-
-"---------------------------------------
-" syntastic
-"---------------------------------------
- let g:syntastic_always_populate_loc_list = 1
- let g:syntastic_auto_loc_list = 1
- let g:syntastic_check_on_open = 1
- let g:syntastic_check_on_wq = 0
- let g:syntastic_mode_map = { 'mode': 'active',
- 	\ 'passive_filetypes': ['cs']}
-
-
- let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
- let g:syntastic_quiet_messages = {"level":"warnings"}
-
-
 "---------------------------------------
 " vimfiler
 "---------------------------------------
@@ -59,8 +43,6 @@ let g:indentLine_char = '|'
 "   exec 'vsplit '. a:candidates[0].action__path
 " endfunction
 " call unite#custom_action('file', 'my_vsplit', s:my_action)
-
-
 
 
 "-------------------------------------------
@@ -89,6 +71,7 @@ endif
 "-------------------------------------------
 au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥User¥shoei.asama¥cs.tags 'pwd' 2>/dev/null &"
 
+
 "-------------------------------------------
 " evervim
 "-------------------------------------------
@@ -101,3 +84,13 @@ nnoremap <silent> ,ec :<C-u>EvervimOpenClient<CR>
 nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
 nnoremap <silent> ,et :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done -tag:someday<CR>
 nnoremap <silent> ,eta :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done<CR>
+
+
+"-------------------------------------------
+" quickrun
+"-------------------------------------------
+let g:quickrun_config={'*': {'split': ''}}
+let g:quickrun_config._={ 'runner':'vimproc',
+\       "runner/vimproc/updatetime" : 10,
+\       "outputter/buffer/close_on_empty" : 1,
+\ }

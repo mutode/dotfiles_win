@@ -1,0 +1,3 @@
+source C:/vim74/vim74/delmenu.vim
+set langmenu=ja_jp.utf-8
+source C:/vim74/vim74/menu.vim
