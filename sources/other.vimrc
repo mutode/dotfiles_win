@@ -7,9 +7,7 @@
 "-------------------------------------------
 set t_Co=256
 syntax on
-if has('win32') || has('win64')
-	colorscheme hybrid 
-endif
+colorscheme hybrid 
 
 
 "-------------------------
@@ -61,10 +59,6 @@ augroup END
 " 拡張子で読み込み設定を変える
 " au BufNewFile,BufRead *.cs set tags+=$COMMON_HOME/cs.tags
 set tags=./tags,tags;
-if has('path_extra')
-	set tags+=tags;
-endif
-
 
 "-------------------------------------------
 " vim-tagsの設定 
@@ -76,14 +70,6 @@ au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥U
 " evervim
 "-------------------------------------------
 let g:evervim_devtoken='S=s213:U=15a04b4:E=152c4b91e13:C=14b6d07f120:P=1cd:A=en-devtoken:V=2:H=d2baa5d6ce45cd3fb8f474ea06bb824d'
-nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
-nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
-nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
-nnoremap <silent> ,eb :<C-u>EvervimOpenBrowser<CR>
-nnoremap <silent> ,ec :<C-u>EvervimOpenClient<CR>
-nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
-nnoremap <silent> ,et :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done -tag:someday<CR>
-nnoremap <silent> ,eta :<C-u>EvervimSearchByQuery<SPACE>tag:todo -tag:done<CR>
 
 
 "-------------------------------------------
