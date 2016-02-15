@@ -47,6 +47,9 @@ NeoBundle 'Yggdroot/indentLine'
 "powerlineの代わりにlightline
 NeoBundle 'itchyny/lightline.vim'
 
+" 正直入れたくなかった
+NeoBundle 'scrooloose/syntastic'
+
 " for MarkDown
 NeoBundle 'kannokanno/previm'
 NeoBundle 'plasticboy/vim-markdown'
