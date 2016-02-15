@@ -21,13 +21,13 @@ let g:lightline = {
 			\ 'fileencoding': 'MyFileencoding',
 			\ 'mode': 'MyMode'
 			\ },
-			\'component_expand': {
-			\ 'syntastic': 'SyntasticStatuslineFlag'
-			\ },
-			\'component_type': {
-			\ 'syntastic': 'error',
-			\ }
 			\}
+			" \'component_expand': {
+			" \ 'syntastic': 'SyntasticStatuslineFlag'
+			" \ },
+			" \'component_type': {
+			" \ 'syntastic': 'error',
+			" \ }
 
 function! MyModified()
 	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -78,7 +78,7 @@ augroup AutoSyntastic
 	autocmd BufWritePost *.cs call s:syntastic()
 augroup END
 function! s:syntastic()
-	SyntasticCheck
+	" SyntasticCheck
 	call lightline#update()
 endfunction
 " let g:lightline = {
