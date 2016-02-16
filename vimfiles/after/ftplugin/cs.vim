@@ -4,6 +4,7 @@ scriptencoding utf-8
 setlocal formatoptions-=r
 setlocal formatoptions-=o
 setlocal tabstop=4
+setlocal expandtab
 
 " setlocal syntax=cs
 " let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
