@@ -46,10 +46,13 @@ let g:indentLine_char = '|'
 "-------------------------------------------
 "PreVim
 "-------------------------------------------
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
+" augroup PrevimSettings
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+" augroup END
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = ''
+let g:vim_markdown_folding_disabled=1
 
 
 
