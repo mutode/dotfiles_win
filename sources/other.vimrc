@@ -68,13 +68,6 @@ set tags=./tags,tags;
 "-------------------------------------------
 au BufNewFile,BufRead *.cs let g:vim_tags_project_tags_command = "ctags -f C:¥User¥shoei.asama¥cs.tags 'pwd' 2>/dev/null &"
 
-
-"-------------------------------------------
-" evervim
-"-------------------------------------------
-let g:evervim_devtoken='S=s213:U=15a04b4:E=152c4b91e13:C=14b6d07f120:P=1cd:A=en-devtoken:V=2:H=d2baa5d6ce45cd3fb8f474ea06bb824d'
-
-
 "-------------------------------------------
 " quickrun
 "-------------------------------------------
