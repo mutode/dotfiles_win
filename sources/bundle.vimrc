@@ -58,6 +58,9 @@ NeoBundle 'tyru/open-browser.vim'
 " evervim for Evernote
 NeoBundle 'kakkyz81/evervim'
 
+" python 補完!!
+NeoBundle 'davidhalter/jedi-vim'
+
 " カラーテーマ
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'jpo/vim-railscasts-theme'

@@ -37,3 +37,6 @@ git clone http://github.com/Shougo/neobundle.vim ".vim¥bundle¥neobundle.vim"
 `
 
 1. `kaoriya-vimインストールフォルダ(vim74なんちゃら)/plugins/vimproc/autoload`下のwindows用dllを`~/.vim/bundle/vimproc/autoload`下にコピー。またはvisualstudioやMinGWなどで自前ビルドをして`~/.vim/bundle/vimproc/autoload`下にコピー。
+
+1. `~/.vim/bundle/jedi-vim/`で`git submodule update --init`をすること
+
